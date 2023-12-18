@@ -1,5 +1,5 @@
 import { body } from 'express-validator';
-import { availableUserRoles } from '../constants';
+import { availableUserRoles } from '../constants.js';
 const userRegisterValidator = () => {
     return [
         body("email")
@@ -53,4 +53,4 @@ const userLoginValidator = () => {
     ]
 }
 
-export { validateRegisteredUser }
+export { userRegisterValidator,userLoginValidator }

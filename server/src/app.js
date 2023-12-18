@@ -2,7 +2,7 @@ import { createServer } from "http";
 import express, { urlencoded } from "express";
 import { rateLimit } from 'express-rate-limit'
 import cors from "cors";
-import { ApiError } from "./utils/ApiError";
+import { ApiError } from "./utils/ApiError.js";
 import userRouter from './routes/user.routes.js'
 const app = express()
 const httpServer = createServer(app)  

@@ -1,8 +1,8 @@
-import { userRolesEnum } from "../constants"
-import { User } from "../models/user.models"
-import { ApiError } from "../utils/ApiError"
-import { asyncHandler } from "../utils/asyncHandler"
-import { emailVerificationMailgenContent, sendEmail } from "../utils/mail"
+import { userRolesEnum } from "../constants.js"
+import { User } from "../models/user.models.js"
+import { ApiError } from "../utils/ApiError.js"
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { emailVerificationMailgenContent, sendEmail } from "../utils/mail.js"
 
 const registerUser = asyncHandler(async (req, res) => {
 

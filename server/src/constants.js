@@ -17,6 +17,6 @@ const userRolesEnum={
     USER:"USER"
 }
 
-const availableUserRoles = Object.values(userRoles)
+const availableUserRoles = Object.values(userRolesEnum)
 
 export{DB_NAME,userLoginType,availableSocialLoginTypes,userRolesEnum,availableUserRoles}

@@ -2,7 +2,7 @@ import mongoose,{Schema} from 'mongoose';
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
-import { availableSocialLoginTypes, availableUserRoles, userLoginType, userRoles } from '../constants';
+import { availableSocialLoginTypes, availableUserRoles, userLoginType, userRolesEnum } from '../constants.js';
 
 
 
@@ -27,7 +27,7 @@ const UserSchema = new Schema({
     role:{
         type:String,
         enum:availableUserRoles,
-        default:userRoles.USER,
+        default:userRolesEnum.USER,
         required:true
     },
     loginType:{
@@ -46,7 +46,7 @@ const UserSchema = new Schema({
         },
     },
     isEmailVerified:{
-        type:boolean,
+        type:Boolean,
         default:false
     },
     emailVerificationToken:{
@@ -112,7 +112,7 @@ UserSchema.methods.generateRefreshToken=  function(){
 
 }
 
-userSchema.methods.generateTemporaryToken = function () {
+UserSchema.methods.generateTemporaryToken = function () {
     // This token should be client facing
     // for example: for email verification unHashedToken should go into the user's mail
     const unHashedToken = crypto.randomBytes(20).toString("hex");
