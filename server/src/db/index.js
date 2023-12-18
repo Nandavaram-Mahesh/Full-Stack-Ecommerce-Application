@@ -17,6 +17,7 @@ const connectDB = async()=>{
     } 
     catch(error){
         console.log("MongoDB connection error: ",error)
+        new ApiError(400,"Testing Api Error Class",error)
         process.exit(1)
     }
 
