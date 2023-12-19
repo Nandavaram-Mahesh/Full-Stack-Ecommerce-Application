@@ -8,7 +8,7 @@ const sendEmail = async (options)=>{
         product: {
             // Appears in header & footer of e-mails
             name: 'F2C Store',
-            link: ''
+            link: 'https://google.com'
             // Optional product logo
             // logo: 'https://mailgen.js/img/logo.png'
         }
@@ -25,11 +25,12 @@ const sendEmail = async (options)=>{
     const transporter = nodemailer.createTransport({
         host:process.env.MAILTRAP_SMTP_HOST,
         port:process.env.MAILTRAP_SMTP_PORT ,
-        secure: true,
+        secure: false,
         auth: {
           user:process.env.MAILTRAP_SMTP_USER,
           pass:process.env.MAILTRAP_SMTP_PASS,
         },
+
     })
 
     const mail = {

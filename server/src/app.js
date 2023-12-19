@@ -4,6 +4,7 @@ import { rateLimit } from 'express-rate-limit'
 import cors from "cors";
 import { ApiError } from "./utils/ApiError.js";
 import userRouter from './routes/user.routes.js'
+import categoryRouter from "./routes/category.routes.js"
 const app = express()
 const httpServer = createServer(app)  
 
@@ -39,6 +40,10 @@ app.use(
 //  Routes
 
 app.use("/api/v1/users",userRouter)
+
+app.use("/api/v1/ecommerce/categories",categoryRouter)
+
+
 
 
 

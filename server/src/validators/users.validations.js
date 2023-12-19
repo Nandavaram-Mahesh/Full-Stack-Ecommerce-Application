@@ -3,34 +3,25 @@ import { availableUserRoles } from '../constants.js';
 const userRegisterValidator = () => {
     return [
         body("email")
-            .trim()
-            .notEmpty()
-            .withMessage("Email Required")
-            .isEmail()
-            .isLowercase()
-            .withMessage("Provide proper email address")
-        ,
+          .trim()
+          .notEmpty()
+          .withMessage("Email is required")
+          .isEmail()
+          .withMessage("Email is invalid"),
         body("userName")
-            .trim()
-            .notEmpty()
-            .withMessage("UserName Required")
-            .isLowercase()
-            .isLength({ min: 3 }).withMessage("Username must be at lease 3 characters long")
-        ,
-        body("password")
-            .trim()
-            .notEmpty().withMessage("Password Required")
-            .matches(/[A-Z]/).withMessage('Password must contain at least one uppercase letter')
-            .matches(/[a-z]/).withMessage('Password must contain at least one lowercase letter')
-            .matches(/[0-9]/).withMessage('Password must contain at least one digit')
-            .matches(/[!@#$%^&*(),.?":{}|<>]/).withMessage('Password must contain at least one special character')
-            .isLength({ min: 6, max: 15 }).withMessage('Password must be between 6 and 15 characters')
-        ,
+          .trim()
+          .notEmpty()
+          .withMessage("Username is required")
+          .isLowercase()
+          .withMessage("Username must be lowercase")
+          .isLength({ min: 3 })
+          .withMessage("Username must be at lease 3 characters long"),
+        body("password").trim().notEmpty().withMessage("Password is required"),
         body("role")
-            .optional()
-            .isIn(availableUserRoles)
-            .withMessage("Invalid User Role")
-    ]
+          .optional()
+          .isIn(availableUserRoles)
+          .withMessage("Invalid user role"),
+      ];
 }
 
 const userLoginValidator = () => {
@@ -40,7 +31,7 @@ const userLoginValidator = () => {
             .trim()
             .notEmpty().withMessage("Email Required")
             .isEmail().withMessage("Provide proper email address")
-            .isLowercase()
+            .isLowercase().withMessage("Email must be lowercase")
         ,
         body("userName")
             .trim()
@@ -49,7 +40,7 @@ const userLoginValidator = () => {
             .isLowercase()
         ,
         body("password")
-        .isEmpty().withMessage("Password is Required")
+        .notEmpty().withMessage("Password is Required")
     ]
 }
 

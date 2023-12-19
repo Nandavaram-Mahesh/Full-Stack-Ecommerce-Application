@@ -7,7 +7,7 @@ import { ApiError } from "./utils/ApiError.js";
  * If yes then it structures them and throws an {@link ApiError} which forwards the error to the {@link errorHandler} middleware which throws a uniform response at a single place
 */
 
-const validate = ({req,res})=>{
+const validate = (req,res,next)=>{
     
     const errors = validationResult(req);
     if(errors.isEmpty()){
@@ -17,6 +17,7 @@ const validate = ({req,res})=>{
     errors.array().map((error)=>extractedErrors.push({[error.path]:error.msg}))
 
     // 422: Unprocessable Entity
+    console.log(extractedErrors)
     throw new ApiError(422, "Received data is not valid", extractedErrors)
 }
 

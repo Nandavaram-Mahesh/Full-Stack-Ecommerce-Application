@@ -18,5 +18,6 @@ const userRolesEnum={
 }
 
 const availableUserRoles = Object.values(userRolesEnum)
+const USER_TEMPORARY_TOKEN_EXPIRY = 20 * 60 * 1000; // 20 minutes
 
-export{DB_NAME,userLoginType,availableSocialLoginTypes,userRolesEnum,availableUserRoles}
+export{DB_NAME,userLoginType,availableSocialLoginTypes,userRolesEnum,availableUserRoles,USER_TEMPORARY_TOKEN_EXPIRY}
